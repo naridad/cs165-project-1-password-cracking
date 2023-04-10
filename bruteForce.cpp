@@ -4,6 +4,7 @@
 // Password Hash: $XJ4b7w1UQni3YpIwY2/99/: => XJ4b7w1UQni3YpIwY2/99/
 #include <iostream>
 #include <string.h>
+#include "hashlib2plus/trunk/src/hashlibpp.h"
 
 using namespace std;
 
@@ -16,27 +17,27 @@ int main() {
     int HAI = 0;
 
     string salt = "";
-    string pswrdHash = "";
-    string paswrd = "";
+    string passwordHash = "";
+    string password = "";
 
     // Splits the string
-    Split(totalHash, HAI, salt, pswrdHash);
+    Split(totalHash, HAI, salt, passwordHash);
 
     cout << "HAI: " << HAI << endl;
     cout << "Salt: " << salt << endl;
-    cout << "Hash: " << pswrdHash << endl;
+    cout << "Hash: " << passwordHash << endl;
 
     // do all the stuff to find it
     // md5()
 
 
     // prints the found password
-    // cout << "password: " << paswrd << endl;
+    // cout << "password: " << password << endl;
 
     return 0;
 }
 
-void Split(string totalHash, int& HAI, string& salt, string& pswrdHash) {
+void Split(string totalHash, int& HAI, string& salt, string& passwordHash) {
     int sepCnt = 0; 
 
     for (int i = 0; i < totalHash.length(); i++) {
@@ -47,7 +48,7 @@ void Split(string totalHash, int& HAI, string& salt, string& pswrdHash) {
         else if (sepCnt == 2 && totalHash[i] != '$')
             salt.push_back(totalHash[i]);
         else if (sepCnt == 3 && totalHash[i] != ':')
-            pswrdHash.push_back(totalHash[i]);
+            passwordHash.push_back(totalHash[i]);
         else if (totalHash[i] == ':')
             return;
     }
