@@ -1,0 +1,8 @@
+git status
+    shows status of the repository
+    untracked files need to be added with `git add <file-name>`
+git commit -am "commit message"
+git pull
+git push
+
+add the compiled files to the .gitignore so they dont get added to the repository everytime we compile
