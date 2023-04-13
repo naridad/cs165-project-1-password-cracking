@@ -62,7 +62,11 @@ class md5crypt:
 
         return intermediate
 
-    #rearrange bytes by given list
+    '''
+    Pick out the 16 bytes in this order: 11 4 10 5 3 9 15 2 8 14 1 7 13 0 6 12.
+    For each group of 6 bits (there are 22 groups), starting with the least significant
+    Output the corresponding base64 character with this index
+    '''
     def get_bytes(self, intermediate):
         response = b""
         byte_list = [11, 4, 10, 5, 3, 9, 15, 2, 8, 14, 1, 7, 13, 0, 6, 12]
@@ -110,9 +114,9 @@ if __name__ == "__main__":
     
     '''
     file that has every 6 character combination of lowercase letters
-    308 million characters
+    26^6 ≈ 308 million possible passwords
     use generate.sh to create the list of passwords to work on
-    ie `./generate 6 > passwords`
+    passwords file included in this repo is smaller example file that includes the real password
     '''
     file = open("passwords")
     
