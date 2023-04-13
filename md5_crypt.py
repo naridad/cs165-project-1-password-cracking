@@ -45,7 +45,7 @@ class md5crypt:
 
         return intermediate
 
-    # rearrange bytes by given list
+    #rearrange bytes by given list
     def get_bytes(self, intermediate: bytes) -> bytes:
         response = b""
         byte_list = [11, 4, 10, 5, 3, 9, 15, 2, 8, 14, 1, 7, 13, 0, 6, 12]
@@ -54,7 +54,7 @@ class md5crypt:
         
         return response
 
-    # base64 table
+    #crypt base64 table
     base64="./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
     def string_to_hex(self, string: str) -> str:
@@ -88,13 +88,27 @@ class md5crypt:
 
 if __name__ == "__main__":
 
+    #the hash taken from etc_shadow, team42
     expected_hash = "$1$4fTgjp6q$XJ4b7w1UQni3YpIwY2/99/"
+    
+    #file that has every 6 character combination of lowercase letters
+    #308 million characters
+    #use generate.sh to create the list of passwords to work on
+    #ie `./generate 6 > passwords`
     file = open("passwords")
+    
+    #the salt retrieved from the hash
     salt = b"4fTgjp6q"
+
+    #helps track how many hashes have been ran through
     hash_counter = 1
 
     instance = md5crypt()
+
     for line in file:
+
+        #encode turns the password from the file into bytes
+        #rstrip removes the trailing new line
         password = line.encode().rstrip()
         MD5 = instance.hash(password, salt)
         hash_counter+= 1
