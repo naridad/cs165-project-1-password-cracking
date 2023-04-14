@@ -1,3 +1,5 @@
+team 42 hash: $1$4fTgjp6q$XJ4b7w1UQni3YpIwY2/99/
+team 42 password: gaujwh
 single thread/process
-i5 4690k
-1350 passwords/sec
+cpu model: i5 4690k
+throughput: 1350 passwords/sec
