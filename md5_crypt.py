@@ -102,7 +102,10 @@ class md5crypt:
         # int to base64
         encoded = ""
         for _ in range(22):
+            print("intermediate: ", intermediate)
+            print("       mod64: ", intermediate % 64)
             encoded += self.base64[intermediate % 64]
+            print("     encoded: ", encoded)
             intermediate //= 64
 
         return magic.decode() + salt.decode() + '$' + encoded
